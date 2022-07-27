@@ -1,0 +1,95 @@
+Inheritance
+// this keyword in constructors
+// Constructor overloading
+import java.lang.*;
+import java.util.*;
+
+class Student
+{
+	int sno;
+	String sname;
+	Scanner sc= new Scanner(System.in);
+	
+	public void readData()
+	{
+	    System.out.println("enter student no and name: ");
+	    sno=sc.nextInt();
+	    sname=sc.next();
+	}
+	
+	public void showData()
+	{
+		System.out.println("the student no is " + sno);
+		System.out.println("the student name is " + sname);
+	}
+}
+
+class Test extends Student
+{
+	public int sub1,sub2,sub3;
+	
+	public void readData1()
+	{
+		
+		System.out.println("enter subject marks for student: ");
+		sub1=sc.nextInt();
+		sub2=sc.nextInt();
+		sub3=sc.nextInt();
+		
+	}
+	
+	public void showData1()
+	{
+
+		System.out.println("the student sub1 marks " + sub1);
+		System.out.println("the student sub2 marks " + sub2);
+		System.out.println("the student sub3 marks " + sub3);
+		 
+	}
+}
+
+class Result extends Test{
+    int total;
+    double avg;
+    String result,div;
+    
+    public void calculate(){
+        total = sub1+sub2+sub3;
+        avg = total/3;
+        
+        if(sub1 > 35 & sub2 > 35 & sub3 > 35){
+            result = "Pass";
+        }else{
+            result = "Fail";
+        }
+        
+        if(avg>=90){
+            div = "First";
+        }else if(avg >=80 & avg<90){
+            div="Second";
+        }else if(avg >=70 & avg<80){
+            div="Third";
+        }else if(avg >=60 & avg<70){
+            div="Fourth";
+        }else if(avg >=50 & avg<60){
+            div="Fifth";
+        }else{
+            div="Sixth";
+        }
+    }
+    
+    public void showData2(){
+        System.out.println("the student total marks " + total);
+		System.out.println("the student avg marks " + avg);
+		System.out.println("the student result " + result);
+		System.out.println("the student divison " + div);
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Result r = new Result();
+	    r.readData();
+	}
+}
