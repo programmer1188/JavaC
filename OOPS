@@ -97,3 +97,87 @@ public class Main
 	}
 }
 
+
+
+Abstract Method:
+
+abstract class Customer{ 
+    int acno, bal; 
+    
+    public Customer(int acno, int bal){
+        this.acno = acno;
+        this.bal = bal;
+    }
+    
+    public void show(){
+        System.out.println(acno);
+        System.out.println(bal);
+    }
+
+    abstract public void withdraw(int amount);
+}
+
+class Savings extends Customer{
+
+    public Savings(int acno, int bal){
+        
+    }
+    
+    public void deposit(int amount){
+        this.bal = this.bal + amount;
+    }
+    
+    public void withdraw(int amount){   
+        if((bal - amount) > 1000){
+            bal = bal - amount;
+        }else{
+            System.out.println("Low balace");
+        }
+    }
+}
+
+
+class Current extends Customer{
+    
+    // parametric constructor
+    public Current(int acno, int bal){
+        this.acno = acno;
+        this.bal = bal;
+    }
+
+    public void deposit(int amount){
+        this.bal = this.bal+amount;
+    }
+    
+    public void withdraw(){
+         if((bal - amount) > 2000){
+            bal = bal - amount;
+        }else{
+            System.out.println("Low balace");
+        }
+    }
+   
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Savings s = new Savings(10004,5000);
+		s.show();
+		s.deposit(2000);
+		s.show();
+		s.withdraw(5000);
+		s.show();
+		s.withdraw(1500);
+		s.show();
+		
+		Current c = new Current(10005,10000);
+		c.show();
+		c.deposit(2000);
+		c.show();
+		c.withdraw(5000);
+		c.show();
+		c.withdraw(1500);
+		c.show();
+	}
+}
